@@ -62,21 +62,9 @@ class User implements UserInterface
      */
     private $projets;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Competence::class, inversedBy="users")
-     */
-    private $competences;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Filiere::class, inversedBy="user")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $filiere;
-
     public function __construct()
     {
         $this->projets = new ArrayCollection();
-        $this->competences = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -232,44 +220,6 @@ class User implements UserInterface
                 $projet->setUser(null);
             }
         }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Competence[]
-     */
-    public function getCompetences(): Collection
-    {
-        return $this->competences;
-    }
-
-    public function addCompetence(Competence $competence): self
-    {
-        if (!$this->competences->contains($competence)) {
-            $this->competences[] = $competence;
-        }
-
-        return $this;
-    }
-
-    public function removeCompetence(Competence $competence): self
-    {
-        if ($this->competences->contains($competence)) {
-            $this->competences->removeElement($competence);
-        }
-
-        return $this;
-    }
-
-    public function getFiliere(): ?Filiere
-    {
-        return $this->filiere;
-    }
-
-    public function setFiliere(?Filiere $filiere): self
-    {
-        $this->filiere = $filiere;
 
         return $this;
     }

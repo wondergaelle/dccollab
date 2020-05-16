@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ProjetRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,12 +25,12 @@ class Projet
     /**
      * @ORM\Column(type="datetime")
      */
-    private $dateCreation;
+    private $date_creation;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nomEntreprise;
+    private $nom_entreprise;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -44,16 +42,6 @@ class Projet
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Competence::class, inversedBy="projets")
-     */
-    private $competence;
-
-    public function __construct()
-    {
-        $this->competence = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -74,24 +62,24 @@ class Projet
 
     public function getDateCreation(): ?\DateTimeInterface
     {
-        return $this->dateCreation;
+        return $this->date_creation;
     }
 
-    public function setDateCreation(\DateTimeInterface $dateCreation): self
+    public function setDateCreation(\DateTimeInterface $date_creation): self
     {
-        $this->dateCreation = $dateCreation;
+        $this->date_creation = $date_creation;
 
         return $this;
     }
 
     public function getNomEntreprise(): ?string
     {
-        return $this->nomEntreprise;
+        return $this->nom_entreprise;
     }
 
-    public function setNomEntreprise(string $nomEntreprise): self
+    public function setNomEntreprise(string $nom_entreprise): self
     {
-        $this->nomEntreprise = $nomEntreprise;
+        $this->nom_entreprise = $nom_entreprise;
 
         return $this;
     }
@@ -116,32 +104,6 @@ class Projet
     public function setUser(?User $user): self
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Competence[]
-     */
-    public function getCompetence(): Collection
-    {
-        return $this->competence;
-    }
-
-    public function addCompetence(Competence $competence): self
-    {
-        if (!$this->competence->contains($competence)) {
-            $this->competence[] = $competence;
-        }
-
-        return $this;
-    }
-
-    public function removeCompetence(Competence $competence): self
-    {
-        if ($this->competence->contains($competence)) {
-            $this->competence->removeElement($competence);
-        }
 
         return $this;
     }
