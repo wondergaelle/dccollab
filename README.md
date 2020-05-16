@@ -42,11 +42,7 @@ composer create-project symfony/website-skeleton salutem
 ```
 
 Eventuellement modifier le fichier .gitignore
-```
-.idea/
-public/uploads
-*.bak
-```
+
 ### Installer WebPack Encore
 
 https://symfony.com/doc/current/frontend.html
