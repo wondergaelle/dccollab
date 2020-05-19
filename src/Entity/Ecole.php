@@ -34,9 +34,15 @@ class Ecole
      */
     private $users;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Filiere::class, mappedBy="ecoles")
+     */
+    private $filieres;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->filieres = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,6 +100,34 @@ class Ecole
             if ($user->getEcole() === $this) {
                 $user->setEcole(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Filiere[]
+     */
+    public function getFilieres(): Collection
+    {
+        return $this->filieres;
+    }
+
+    public function addFiliere(Filiere $filiere): self
+    {
+        if (!$this->filieres->contains($filiere)) {
+            $this->filieres[] = $filiere;
+            $filiere->addEcole($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFiliere(Filiere $filiere): self
+    {
+        if ($this->filieres->contains($filiere)) {
+            $this->filieres->removeElement($filiere);
+            $filiere->removeEcole($this);
         }
 
         return $this;
