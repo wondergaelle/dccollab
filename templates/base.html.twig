@@ -30,6 +30,27 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('user_index', {'id': 'x'}) }}">Liste des utilisateurs</a>
                     </li>
+                    <li class="nav-item">
+                        {% if app.user %}
+                    <li class="nav-item"><a class="nav-link" href="{{ path('projet_new') }}">Faire un don</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a></li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item"><a class="nav-link" href="{{ path('easyadmin') }}">Administration</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('profile') }}">
+                                <i class="fa fa-user-circle"></i>
+                                Mon profil
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_login') }}">
+                            <i class="fa fa-sign-in"></i>
+                            Me connecter
+                        </a>
+                        {% endif %}
+                    </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search">
