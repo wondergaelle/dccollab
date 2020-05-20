@@ -25,7 +25,7 @@ class Categorie
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity=Competence::class, mappedBy="categories")
+     * @ORM\OneToMany(targetEntity=Competence::class, mappedBy="categorie")
      */
     private $competences;
 
@@ -63,7 +63,7 @@ class Categorie
     {
         if (!$this->competences->contains($competence)) {
             $this->competences[] = $competence;
-            $competence->setCategories($this);
+            $competence->setCategorie($this);
         }
 
         return $this;
@@ -74,8 +74,8 @@ class Categorie
         if ($this->competences->contains($competence)) {
             $this->competences->removeElement($competence);
             // set the owning side to null (unless already changed)
-            if ($competence->getCategories() === $this) {
-                $competence->setCategories(null);
+            if ($competence->getCategorie() === $this) {
+                $competence->setCategorie(null);
             }
         }
 

@@ -37,7 +37,7 @@ class Competence
     /**
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="competences")
      */
-    private $categories;
+    private $categorie;
 
     public function __construct()
     {
@@ -118,14 +118,14 @@ class Competence
         return $this;
     }
 
-    public function getCategories(): ?Categorie
+    public function getCategorie(): ?Categorie
     {
-        return $this->categories;
+        return $this->categorie;
     }
 
-    public function setCategories(?Categorie $categories): self
+    public function setCategorie(?Categorie $categorie): self
     {
-        $this->categories = $categories;
+        $this->categorie = $categorie;
 
         return $this;
     }
