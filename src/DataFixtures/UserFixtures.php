@@ -29,7 +29,6 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         $admin->setEmail("gaelle_floch@hotmail.com");
         $admin->setDateNaissance(new \ DateTime('04/05/1979'));
         $admin->setEcole($this->getReference("ecole-1"));
-        $admin->addCompetence($this->getReference("comp-1"));
         $admin->setFiliere($this->getReference("filiere-1"));
         $admin->setPassword($this->encoder->encodePassword($admin, "gafloch"));
         $admin->setRoles(["ROLE_ADMIN"]);
@@ -45,7 +44,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         return [
             EcoleFixtures::class,
             FiliereFixtures::class,
-            CompetenceFixtures::class
+
 
         ];
     }

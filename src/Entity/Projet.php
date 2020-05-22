@@ -35,7 +35,7 @@ class Projet
     private $nomEntreprise;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     private $contenu;
 
@@ -161,7 +161,10 @@ class Projet
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function getImageOrplaceHolder(): string {
+        return empty($this->getImage())?"images/placeholder.png":"images/". $this->getImage();
+    }
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
@@ -179,4 +182,18 @@ class Projet
 
         return $this;
     }
+
+    //Pour enregistrer la date et l'heure quand les utilisateurs clique sur "Envoyer" dans le formulaire
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist() {
+        $this->setDateCreation(new \DateTime()); //DateTime() : date, heure, minutes de maintenant
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
 }
