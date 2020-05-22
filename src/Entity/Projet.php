@@ -50,6 +50,16 @@ class Projet
      */
     private $competence;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $extrait;
+
     public function __construct()
     {
         $this->competence = new ArrayCollection();
@@ -142,6 +152,30 @@ class Projet
         if ($this->competence->contains($competence)) {
             $this->competence->removeElement($competence);
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getExtrait(): ?string
+    {
+        return $this->extrait;
+    }
+
+    public function setExtrait(string $extrait): self
+    {
+        $this->extrait = $extrait;
 
         return $this;
     }
