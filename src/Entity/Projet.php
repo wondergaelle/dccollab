@@ -193,7 +193,10 @@ class Projet
 
     public function __toString()
     {
-        return $this->getName();
+        return $this->getNom();
     }
+
+
+
 
 }
