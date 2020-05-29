@@ -17,7 +17,10 @@ class ProjetType extends AbstractType
             ->add('nomEntreprise')
             ->add('contenu')
             ->add('user')
+            ->add('image')
+            ->add('extrait')
             ->add('competence')
+
         ;
     }
 
