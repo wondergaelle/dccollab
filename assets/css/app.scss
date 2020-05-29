@@ -1,3 +1,13 @@
+// import bootstrap
+@import "~bootswatch/dist/flatly/variables";
+@import "~bootstrap/scss/bootstrap";
+
+// import bootswatch (superhero)
+@import "~bootswatch/dist/flatly/bootswatch";
+
 body {
     background-color: lightgray;
+}
+.register{
+    background-image: url("images/background.png");
 }

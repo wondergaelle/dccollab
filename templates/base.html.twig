@@ -27,20 +27,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('user_index', {'id': 'x'}) }}">Liste des utilisateurs</a>
                     </li>
-
-
                     <li class="nav-item">
                         {% if app.user %}
                     <li class="nav-item"><a class="nav-link" href="{{ path('projet_new') }}">Créer un projet</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('profil') }}">
+                            <i class="fa fa-user-circle"></i>
+                            Mon profil
+                        </a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a></li>
                     {% if is_granted('ROLE_ADMIN') %}
                         <li class="nav-item"><a class="nav-link" href="{{ path('easyadmin') }}">Administration</a></li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('profil') }}">
-                                <i class="fa fa-user-circle"></i>
-                                Mon profil
-                            </a>
-                        </li>
                     {% endif %}
                     {% else %}
                     <li class="nav-item">
@@ -53,10 +51,12 @@
 
 
                 </ul>
+                {#
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search">
                     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                 </form>
+                #}
             </div>
         </div>
     </nav>

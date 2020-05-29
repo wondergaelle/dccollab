@@ -4,36 +4,36 @@
 
 {# Surcharge de blocks : on projète du contenu dans les différents blocks de thème #}
 {% block body %}
-    <h1>Projet</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ projet.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ projet.nom }}</td>
-            </tr>
-            <tr>
-                <th>DateCreation</th>
-                <td>{{ projet.dateCreation ? projet.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>NomEntreprise</th>
-                <td>{{ projet.nomEntreprise }}</td>
-            </tr>
-            <tr>
-                <th>Contenu</th>
-                <td>{{ projet.contenu }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container">
+        <h1>{{ projet.nom }}</h1>
+        <div class="row">
+            <div class="col4">
+                <img src="{{ asset(projet.imageOrPlaceholder) }}" alt="{{ projet.nom }}" class="img-fluid">
+            </div>
+            <div class="col-8">
+                <h1>{{ projet.nom }}</h1>
+                <span class="badge badge-pill badge-info">
+                    <i class="fa fa-user"></i>
+                    {{ projet.user.fullname }}
+                </span>
 
-    <a href="{{ path('projet_index') }}">back to list</a>
 
-    <a href="{{ path('projet_edit', {'id': projet.id}) }}">edit</a>
+            </div>
+        </div>
 
-    {{ include('projet/_delete_form.html.twig') }}
+        <article>
+            <p>{{ projet.contenu }}</p>
+            <ul class="badges">
+                <h2>Compétences recherchées</h2>
+                {%  for competence in projet.competence %}
+                    <li><a href="{{ path('competence_show',{'id':competence.id}) }}" class="badge badge-pill badge-primary">{{ competence.nom }}</a></li>
+                {% endfor %}
+            </ul>
+        </article>
+        <span><a href="{{ path('projet_edit', {'id': projet.id}) }}">Edit</a></span><br>
+        <span><a href="{{ path('projet_delete', {'id': projet.id}) }}">Delete</a></span>
+
+    </div>
+
 {% endblock %}

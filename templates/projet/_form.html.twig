@@ -1,4 +1,22 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{% block body %}
+    <div class="container">
+    {{ form_start(form) }}
+
+        <div class="form-group">
+            <label for="">Titre</label>
+            {{ form_widget(form.nom) }} <br>
+            <label for="">Entreprise</label>
+            {{ form_widget(form.nomEntreprise) }} <br>
+            <label for="">Contenu</label>
+            {{ form_widget(form.contenu) }} <br>
+            <label for="">Competences </label>
+            {{ form_widget(form.competence) }} <br>
+
+        </div>
+        <div>
+            <button type="submit" class="btn btn-danger">{{ button_label|default('Save') }}</button>
+        </div>
+    </div>
+
+
+{% endblock %}

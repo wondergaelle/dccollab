@@ -1,4 +1,15 @@
-{% extends 'base.html.twig' %}
+{# templates/bundles/EasyAdminBundle/page/layout.html.twig #}
+
+{# DON'T DO THIS: it will cause an infinite loop #}
+{% extends '@EasyAdmin/page/layout.html.twig' %}
+
+{# DO THIS: the '!' symbol tells Symfony to extend from the original template #}
+{% extends '@!EasyAdmin/page/layout.html.twig' %}
+
+{% block sidebar %}
+    {# ... #}
+{% endblock %}
+
 
 {% block title %}Hello DashboardController!{% endblock %}
 

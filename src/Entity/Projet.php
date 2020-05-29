@@ -186,6 +186,7 @@ class Projet
     //Pour enregistrer la date et l'heure quand les utilisateurs clique sur "Envoyer" dans le formulaire
     /**
      * @ORM\PrePersist
+     *
      */
     public function prePersist() {
         $this->setDateCreation(new \DateTime()); //DateTime() : date, heure, minutes de maintenant

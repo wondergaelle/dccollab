@@ -27,7 +27,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         $admin->setNom("Floch");
         $admin->setPrenom("Gaëlle");
         $admin->setEmail("gaelle_floch@hotmail.com");
-        $admin->setDateNaissance(new \ DateTime('04/05/1979'));
+        $admin->setDateNaissance(new \DateTime('04/05/1979'));
         $admin->setEcole($this->getReference("ecole-1"));
         $admin->setFiliere($this->getReference("filiere-1"));
         $admin->setPassword($this->encoder->encodePassword($admin, "gafloch"));
@@ -35,6 +35,18 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($admin);
         $this->addReference("user-admin", $admin);
 
+
+        $user1 = new User();
+        $user1->setNom("Leblanc");
+        $user1->setPrenom("Norbert");
+        $user1->setEmail("norbert.leblanc@gmail.com ");
+        $user1->setDateNaissance(new \ DateTime('12/26/1976'));
+        $user1->setEcole($this->getReference("ecole-2"));
+        $user1->setFiliere($this->getReference("filiere-2"));
+        $user1->setPassword($this->encoder->encodePassword($user1, "nolbc"));
+        $user1->setRoles(["user-user"]);
+        $manager->persist($user1);
+        $this->addReference("user1", $user1);
         $manager->flush();
 
     }

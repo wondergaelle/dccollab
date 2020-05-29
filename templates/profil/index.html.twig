@@ -4,18 +4,19 @@
 
 {% block body %}
     <div class="container">
-        <h1>Hello {{ controller_name }}! ✅</h1>
-        <h2>Mes projets</h2>
-        <a href="{{ path('projet_new') }}" class="btn btn-success">
-            <i class="fa fa-plus-circle"> Ajouter un projet</i>
-        </a>
+        <h1>{{ app.user.fullname }}</h1>
+        <h2>Mes projets en cours</h2>
         <div class="row">
-            %{% for projet in app.user.projets  %}
+            {% for projet in app.user.projets %}
                 <article class="col-4">
                     {% include 'projet/_thumbnail.html.twig' with {'projet': projet} only %}
                 </article>
             {% endfor %}
-
+        </div>
+        <div>
+            <a href="{{ path('projet_new') }}" class="btn btn-danger">
+                <i class="fa fa-plus-circle"> Ajouter un projet</i>
+            </a>
         </div>
 
     </div>

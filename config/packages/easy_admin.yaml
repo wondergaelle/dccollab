@@ -1,6 +1,31 @@
+
+
 easy_admin:
+   site_name: DcCollab
+
+   design:
+      menu:
+         - {route: 'homepage', label: 'Back to website', icon: 'home'}
+         - {entity: 'User', label: 'Users', icon: 'user' }
+         - {entity: 'Projet', label: 'Projets', icon: 'folder-open' }
+         - {entity: 'Categorie', label: 'Categories', icon: 'folder-open' }
+         - {entity: 'Competence', label: 'Competences', icon: 'folder-open' }
+
+
    entities:
 #     # List the entity class name you want to manage
-      - App\Entity\Projet
-      - App\Entity\Categorie
-      - App\Entity\User
+
+      User:
+         class: App\Entity\User
+
+      Projet:
+         class: App\Entity\Projet
+
+      Categorie:
+         class: App\Entity\Categorie
+
+      Competence:
+         class: App\Entity\Competence
+
+
+
