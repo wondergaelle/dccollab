@@ -2,12 +2,16 @@
 @import "~bootswatch/dist/flatly/variables";
 @import "~bootstrap/scss/bootstrap";
 
-// import bootswatch (superhero)
+// import bootswatch (flatly)
 @import "~bootswatch/dist/flatly/bootswatch";
 
+// import font awesone 4
+
 body {
-    background-color: lightgray;
+    background-color: blue;
 }
-.register{
-    background-image: url("images/background.png");
+
+.page-login{
+    width:100vh;
+    height: 800px;
 }
