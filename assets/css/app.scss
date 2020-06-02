@@ -1,17 +1,20 @@
 // import bootstrap
 @import "~bootswatch/dist/flatly/variables";
-@import "~bootstrap/scss/bootstrap";
 
+;
+@import "~bootstrap/scss/bootstrap";
 // import bootswatch (flatly)
 @import "~bootswatch/dist/flatly/bootswatch";
 
 // import font awesone 4
 
-body {
-    background-color: blue;
+
+.bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 80rem;
+
+
 }
 
-.page-login{
-    width:100vh;
-    height: 800px;
-}
+

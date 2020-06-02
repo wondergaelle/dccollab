@@ -2,10 +2,15 @@
 
 namespace App\Form;
 
+use App\Entity\Competence;
 use App\Entity\Projet;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
+
 
 class ProjetType extends AbstractType
 {
@@ -17,9 +22,17 @@ class ProjetType extends AbstractType
             ->add('nomEntreprise')
             ->add('contenu')
             ->add('user')
-            ->add('image')
+            ->add('image', FileType::class,[
+                'label'=> 'Image'
+            ])
             ->add('extrait')
-            ->add('competence')
+            ->add('competence', EntityType::class,[ // relié à l'entity compétences
+                'class'=> Competence::class,
+                'label'=> 'Compétences',
+                'multiple'=>true, // choix multiple
+                'expanded'=>true, // permet d'avoir une liste de case à cocher
+
+            ])
 
         ;
     }
