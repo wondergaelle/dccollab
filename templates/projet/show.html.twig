@@ -12,28 +12,40 @@
                 <img src="{{ asset(projet.imageOrPlaceholder) }}" alt="{{ projet.nom }}" class="img-fluid">
             </div>
             <div class="col-8">
+
                 <h1>{{ projet.nom }}</h1>
-                <span class="badge badge-pill badge-info">
+                <span class="">
                     <i class="fa fa-user"></i>
                     {{ projet.user.fullname }}
                 </span>
-
-
             </div>
         </div>
 
         <article>
             <p>{{ projet.contenu }}</p>
-            <ul class="badges">
+            <ul class="list-group">
                 <h2>Compétences recherchées</h2>
-                {%  for competence in projet.competence %}
-                    <li><a href="{{ path('competence_show',{'id':competence.id}) }}" class="badge badge-pill badge-primary">{{ competence.nom }}</a></li>
+                {% for competence in projet.competence %}
+                    <li><a href="{{ path('competence_show',{'id':competence.id}) }}"
+                           class="">{{ competence.nom }}</a></li>
+
                 {% endfor %}
             </ul>
         </article>
-        <span><a href="{{ path('projet_edit', {'id': projet.id}) }}">Edit</a></span><br>
-        <span><a href="{{ path('projet_delete', {'id': projet.id}) }}">Delete</a></span>
+
+        <article>
+            <ul class="list-group">
+                <h2>Utilisateurs potentiels : </h2>
+                {% for competence in projet.competence %}
+                    <li><a href="{{ path('competence_show',{'id':competence.id}) }}"
+                          ></a></li>
+                    {{ include('competence/_thumbnail.html.twig') }}
+
+                {% endfor %}
+            </ul>
+        </article>
+
 
     </div>
-
 {% endblock %}
+

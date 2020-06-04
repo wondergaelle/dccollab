@@ -3,8 +3,6 @@
 {% block title %}Liste des Projets{% endblock %}
 
 {% block body %}
-
-
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
         <li class="breadcrumb-item"><a href="#">Library</a></li>
@@ -13,35 +11,16 @@
     <main class="page-content">
         <div class="container">
             <h1>Découvrez tous nos projets</h1>
-
             <div class="row">
                 {% for projet in projets %}
-                    <article class="col-4">
-                        <div class="card">
-                            <img src="{{ asset('images/') ~ projet.image }}" class="card-img-top" alt="{{ projet.image }}">
-
-                            <div class=" card-body">
-                                <h5 class="card-title">"{{ projet.nom }}"</h5>
-                                <p class="card-text">
-                                    {% for competence in projet.competence %}
-                                        <span>{{ competence }}</span>
-                                    {% endfor %}
-                                </p>
-                                <a href="{{ path('projet_show', {'id': projet.id}) }}" class="btn btn-primary"><i
-                                            class="fa fa-eye"></i>Voir plus</a>
-
-                                {#
-                                      <a href="{{ path('projet_show', {'id': projet.id}) }}">show</a>
-                                      <a href="{{ path('projet_edit', {'id': projet.id}) }}">edit</a>
-                            #}
-                            </div>
+                    <div>
+                        {{ include('projet/_thumbnail.html.twig') }}
+                        <div class="modal-footer ">
+                            <a href="{{ path('projet_show', {'id': projet.id}) }}" class="btn btn-danger"><i
+                                        class="fa fa-eye"></i>Voir plus</a>
                         </div>
-                    </article>
+                    </div>
                 {% endfor %}
             </div>
-            {#
-                        <a href="{{ path('projet_new') }}">Create new</a>
-                        #}
-        </div>
     </main>
 {% endblock %}

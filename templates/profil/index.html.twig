@@ -4,20 +4,20 @@
 
 {% block body %}
     <div class="container">
-        <h1>{{ app.user.fullname }}</h1>
-        <h2>Mes projets en cours</h2>
-        <div class="row">
-            {% for projet in app.user.projets %}
-                <article class="col-4">
-                    {% include 'projet/_thumbnail.html.twig' with {'projet': projet} only %}
-                </article>
-            {% endfor %}
+        <div class="card mb-3">
+            <h3 class="card-header">{{ app.user.fullname }}</h3>
+            <div class="card-body">
+                <h3 class="card-title text-danger">Mes projets en cours</h3>
+            </div>
+            <div class="row">
+                {% for projet in app.user.projets %}
+                    <article class="col-4">
+                        {% include 'projet/_thumbnail.html.twig' with {'projet': projet} only %}
+                    </article>
+                {% endfor %}
+            </div>
         </div>
-        <div>
-            <a href="{{ path('projet_new') }}" class="btn btn-danger">
-                <i class="fa fa-plus-circle"> Ajouter un projet</i>
-            </a>
-        </div>
-
     </div>
+
+
 {% endblock %}

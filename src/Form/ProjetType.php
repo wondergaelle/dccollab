@@ -9,6 +9,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 
 
@@ -22,6 +24,7 @@ class ProjetType extends AbstractType
             ->add('nomEntreprise')
             ->add('contenu')
             ->add('user')
+
             ->add('image', FileType::class,[
                 'label'=> 'Image'
             ])
@@ -36,6 +39,8 @@ class ProjetType extends AbstractType
 
         ;
     }
+
+
 
     public function configureOptions(OptionsResolver $resolver)
     {

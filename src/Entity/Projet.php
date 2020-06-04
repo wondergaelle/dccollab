@@ -63,6 +63,7 @@ class Projet
     public function __construct()
     {
         $this->competence = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -196,8 +197,6 @@ class Projet
     {
         return $this->getNom();
     }
-
-
 
 
 }

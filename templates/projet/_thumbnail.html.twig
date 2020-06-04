@@ -1,9 +1,19 @@
 <article class="projet-thumbnail">
     <div class="container">
-        <h2>{{ projet.nom }}</h2>
-        <div class="col-4">
-            <img src={{ asset('images/' ~ projet.image  ) }}>
+        <div class="card border-primary mb-3" style="max-width: 20rem;">
+            <h4 class="card-title text-success">{{ projet.nom }}</h4>
+            <p class="card-text">{{ projet.contenu }}</p>
+            <img style="height: 200px; width: 100%; display: block;" src={{ asset('images/' ~ projet.image  ) }}>
         </div>
+        <p>compétences recherchées : </p>
+        {% for competence in projet.competence %}
+            <span class="badge badge badge-primary">
+                <i class="fa fa-user"></i>
+                <span>{{ competence }}</span>
+            </span>
+        {% endfor %}
+
+
 
     </div>
 </article>

@@ -3,24 +3,24 @@
 {% block title %}Competence{% endblock %}
 
 {% block body %}
-    <h1>Competence</h1>
+    <div class="container">
+        <h1>{{ competence.nom }}</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ competence.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ competence.nom }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <ul class="list-group">
+            <h2>Etudiants avec la compétence</h2>
+            {% for user in competence.users %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span lass="badge badge-primary badge-pill"><a href="{{ path('user_show',{'id':user.id}) }}"
+                       class="badge ">{{ user.fullname }} {{ user.ecole }}</a></span></li>
 
-    <a href="{{ path('competence_index') }}">back to list</a>
+            {% endfor %}
+        </ul>
+        <a href="{{ path('competence_index') }}">back to list</a>
 
-    <a href="{{ path('competence_edit', {'id': competence.id}) }}">edit</a>
 
-    {{ include('competence/_delete_form.html.twig') }}
+    </div>
+
+
+
+
 {% endblock %}
