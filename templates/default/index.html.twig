@@ -3,23 +3,21 @@
 {% block title %}DCCollab{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-<main class="page-content">
-    <div class="jumbotron">
-        <div class="container col-8">
-        <h1 class="display-3 justify-content-center">Bienvenue sur DcCollab</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p class="lead">
-            <a class="btn btn-danger btn-lg" href="{{ path('projet_index') }}" role="button">Voir les projets</a>
-        </p>
+
+<div class="bg"
+     style="background-image:url('{{ asset('images/background.png') }}'), linear-gradient(to bottom, rgba(255,255,255,0.6) 80%,rgba(0,0,0,0.6) 80%)">
+    <div class="container">
+
+        <div class="justify-content-center">
+            <h1 class="display-3 justify-content-center text-success">Bienvenue sur DcCollab</h1>
+            <p class="lead text-white">Bonjour, bienvenue sur l’Extranet.
+                Vous êtes candidat, étudiant, ancien, enseignant, entreprise, ou membre de l’administration du réseau,
+                accédez aux services qui vous sont proposés en vous connectant ci-contre..</p>
+            <hr class="my-4">
+
+            <p class="lead">
+                <a class="btn btn-danger btn-lg" href="{{ path('app_login') }}" role="button">Connection</a>
+            </p>
         </div>
     </div>
-
-
-</main>
-{% endblock %}
+    {% endblock %}

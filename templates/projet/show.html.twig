@@ -18,8 +18,8 @@
                     {{ projet.user.fullname }}
                 </span>
                 <span class="">
-                    <i class="fa fa-user"></i>
-                    {{ projet.user.fullname}}
+
+                    {{ projet.dateCreation|date("d/m/Y")}}
                 </span>
             </div>
         </div>
@@ -27,6 +27,7 @@
 
         <article>
             <p>{{ projet.contenu }}</p>
+
 
             <h2>Compétences recherchées</h2>
             {% for competence in projet.competence %}

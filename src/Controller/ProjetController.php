@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
+
+
 /**
  * @Route("/projet")
  */
@@ -92,5 +95,7 @@ class ProjetController extends AbstractController
         return $this->redirectToRoute('projet_index');
     }
 
-
+    public function prePersist(){
+        $this->setCreatedAt(new\ DateTime());
+    }
 }

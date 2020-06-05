@@ -9,13 +9,23 @@
 // import font awesone 4
 
 
-
+.page-content {
+  min-height: 100vh;
+}
 .bg {
   background-size: cover;
   background-repeat: no-repeat;
-  height: 80rem;
-
+  height: 40rem;
 
 }
+
+
+.page-footer {
+
+height: 10rem;
+  background-color: #4E5D6C;
+}
+
+
 
 

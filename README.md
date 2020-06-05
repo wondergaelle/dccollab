@@ -1,4 +1,4 @@
-sy# DcCollab
+# DcCollab
 
 ## Installation
 

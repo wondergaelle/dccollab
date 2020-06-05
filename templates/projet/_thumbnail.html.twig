@@ -4,15 +4,15 @@
             <h4 class="card-title text-success">{{ projet.nom }}</h4>
             <p class="card-text" style="height: 200px">{{ projet.extrait }}</p>
             <img style="height: 200px; width: 100%; display: block;" src={{ asset('images/' ~ projet.image  ) }}>
-        </div>
-        <p>Compétences recherchées : </p>
-        {% for competence in projet.competence %}
-            <span class="badge badge badge-primary">
+            <p >Compétences recherchées : </p>
+
+            {% for competence in projet.competence %}
+
                 <i class="fa fa-user"></i>
-                <span>{{ competence }}</span>
-            </span>
-        {% endfor %}
-        <br>
+                <span class="flex-nowrap" >{{ competence }}</span>
+
+            {% endfor %}
+        </div>
 
     </div>
 </article>

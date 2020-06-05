@@ -6,6 +6,8 @@ use App\Repository\ProjetRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=ProjetRepository::class)
@@ -26,6 +28,7 @@ class Projet
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\GreaterThan("today", message="La date doit être supérieure à {{ compared_value }}")
      */
     private $dateCreation;
 
@@ -57,6 +60,7 @@ class Projet
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(min=100, max=255, minMessage="Extrait trop court", maxMessage="Extrait trop long" )
      */
     private $extrait;
 
@@ -90,7 +94,7 @@ class Projet
 
     public function setDateCreation(\DateTimeInterface $dateCreation): self
     {
-        $this->dateCreation = $dateCreation;
+        $this->dateCreation = new\DateTime(date('Y-m-d H:i:s'));
 
         return $this;
     }

@@ -2,28 +2,26 @@
     {{ form_start(form) }}
 
     <div class="form-group">
-        <label for="">Titre</label>
-        {{ form_widget(form.nom) }} <br>
-        <label for="">Date</label>
-        {{ form_widget(form.dateCreation) }} <br>
-        <label for="">Entreprise</label>
-        {{ form_widget(form.nomEntreprise) }} <br>
-        <label for="">Contenu</label>
-        {{ form_widget(form.contenu) }} <br>
-        <label for="">User</label>
-        {{ form_widget(form.user) }} <br>
 
-        <label for="">Image</label>
-        {{ form_widget(form.image) }} <br>
+        {{ form_row(form.nom) }} <br>
 
-        <label for="">Extrait</label>
-        {{ form_widget(form.extrait) }} <br>
-        <label for="">competence</label>
-        {{ form_widget(form.competence) }} <br>
+        {{ form_row(form.user) }} <br>
+
+        {{ form_row(form.dateCreation) }} <br>
+
+        {{ form_row(form.nomEntreprise) }} <br>
+
+        {{ form_row(form.contenu) }} <br>
+
+        {{ form_row(form.extrait) }} <br>
+
+        {{ form_row(form.image) }} <br>
+
+        {{ form_row(form.competence) }} <br>
 
     </div>
     <div>
-        <button type="submit" class="btn btn-danger">{{ button_label|default('Save') }}</button>
+        <button type="submit" class="btn btn-danger">{{ button_label|default('Sauvegarder') }}</button>
     </div>
 </div>
 {{ form_end(form) }}
