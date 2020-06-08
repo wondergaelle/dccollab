@@ -10,12 +10,12 @@
             <h2>Etudiants avec la compétence</h2>
             {% for user in competence.users %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <span class="badge badge-primary badge-pill"><a href="{{ path('user_show',{'id':user.id}) }}"
-                       class="badge ">{{ user.fullname }} {{ user.ecole }}</a></span></li>
+                    <span class="text-black-50"><a href="{{ path('user_show',{'id':user.id}) }}"
+                       class="text-black-50 ">{{ user.fullname }} {{ user.ecole }}</a></span></li>
 
             {% endfor %}
         </ul>
-        <a href="{{ path('competence_index') }}">back to list</a>
+        <a class="text-danger" href="{{ path('projet_index') }}">back to list</a>
 
 
     </div>

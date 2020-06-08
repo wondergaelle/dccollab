@@ -11,6 +11,10 @@
     <main class="page-content">
         <div class="container">
             <h1>Découvrez tous nos projets</h1>
+
+            <div>
+                {{ form_row(form.competence) }}
+            </div>
             <div class="row">
                 {% for projet in projets %}
                     <div>

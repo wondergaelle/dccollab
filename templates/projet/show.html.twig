@@ -13,13 +13,19 @@
             </div>
             <div class="col-8">
                 <h3>{{ projet.nom }}</h3>
+                <p>projet crée le : </p>
                 <span class="">
+                    {{ projet.dateCreation|date("d/m/Y") }}
+                </span><br>
+                <div>
+                    <p>Par : </p>
+                    <span class="">
                     <i class="fa fa-user"></i>
                     {{ projet.user.fullname }}
-                </span>
+                </span><br>
+                </div>
                 <span class="">
-
-                    {{ projet.dateCreation|date("d/m/Y")}}
+                    {{ projet.user.email }}
                 </span>
             </div>
         </div>
@@ -31,8 +37,8 @@
 
             <h2>Compétences recherchées</h2>
             {% for competence in projet.competence %}
-                <li><a href="{{ path('competence_show',{'id':competence.id}) }}"
-                       class="text-primary">{{ competence.nom }}</a></li>
+            <li><a href="{{ path('competence_show',{'id':competence.id}) }}"
+                   class="text-primary">{{ competence.nom }}</a></li>
 
             {% endfor %}<br>
 
@@ -43,7 +49,7 @@
             <h2>Utilisateurs potentiels : </h2>
             {% for competence in projet.competence %}
                 <a href="{{ path('competence_show',{'id':competence.id}) }} "
-                >  </a>
+                > </a>
                 <span> {{ include('competence/_thumbnail.html.twig') }}</span>
 
             {% endfor %}

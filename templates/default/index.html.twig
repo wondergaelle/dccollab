@@ -7,7 +7,9 @@
 <div class="bg"
      style="background-image:url('{{ asset('images/background.png') }}'), linear-gradient(to bottom, rgba(255,255,255,0.6) 80%,rgba(0,0,0,0.6) 80%)">
     <div class="container">
-
+        {% if app.user %}
+        <h2 class="lead text-white">Bienvenue  {{ app.user.fullname }}</h2>
+        {% else %}
         <div class="justify-content-center">
             <h1 class="display-3 justify-content-center text-success">Bienvenue sur DcCollab</h1>
             <p class="lead text-white">Bonjour, bienvenue sur l’Extranet.
@@ -19,5 +21,6 @@
                 <a class="btn btn-danger btn-lg" href="{{ path('app_login') }}" role="button">Connection</a>
             </p>
         </div>
+        {% endif %}
     </div>
     {% endblock %}
