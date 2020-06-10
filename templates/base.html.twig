@@ -15,7 +15,7 @@
 <header class="page-header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="{{ path('homepage') }}">DcCollab</a>
+            <a class="navbar-brand" href="{{ path('homepage') }}"> <img src="{{ asset('images/logo-blanc.png') }}" alt="logo-blanc" width="90rem"> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
                     aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
                     {% if app.user %}
-                    <li class="nav-item active"><a class="nav-link" href="{{ path('projet_new') }}">Créer un projet</a></li>
+                    <li class="nav-item "><a class="nav-link" href="{{ path('projet_new') }}">Créer un projet</a></li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('profil') }}">
                             <i class="fa fa-user-circle"></i>
@@ -54,6 +54,8 @@
         </div>
     </nav>
 </header>
+
+
 
 <main>
     {% block body %}{% endblock %}

@@ -4,11 +4,12 @@
 
 {% block body %}
 
-<div class="bg"
-     style="background-image:url('{{ asset('images/background.png') }}'), linear-gradient(to bottom, rgba(255,255,255,0.6) 80%,rgba(0,0,0,0.6) 80%)">
+<div class="bg" style="background-image:url('{{ asset('images/background 2.png') }}') ;">
+
     <div class="container">
         {% if app.user %}
-        <h2 class="lead text-white">Bienvenue  {{ app.user.fullname }}</h2>
+        <h2 class="">Bienvenue  {{ app.user.fullname }}</h2>
+            <p class="lead">Bienvenue  {{ app.user.fullname }}</p>
         {% else %}
         <div class="justify-content-center">
             <h1 class="display-3 justify-content-center text-success">Bienvenue sur DcCollab</h1>

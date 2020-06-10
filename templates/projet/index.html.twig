@@ -4,18 +4,17 @@
 
 {% block body %}
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Library</a></li>
+        <li class="breadcrumb-item"><a href="#"></a></li>
+        <li class="breadcrumb-item"><a href="#"></a></li>
         <li class="breadcrumb-item active">Data</li>
     </ol>
     <main class="page-content">
-        <div class="container">
+        <div class="container-sm">
             <h1>Découvrez tous nos projets</h1>
 
-            <div>
-                {{ form_row(form.competence) }}
-            </div>
+
             <div class="row">
+
                 {% for projet in projets %}
                     <div>
                         {{ include('projet/_thumbnail.html.twig') }}
