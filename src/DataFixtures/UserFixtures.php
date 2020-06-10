@@ -44,7 +44,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         $user1->setEcole($this->getReference("ecole-2"));
         $user1->setFiliere($this->getReference("filiere-2"));
         $user1->setPassword($this->encoder->encodePassword($user1, "nolbc"));
-        $user1->setRoles(["user-user"]);
+        $user1->setRoles(["ROLE_USER"]);
         $manager->persist($user1);
         $this->addReference("user1", $user1);
         $manager->flush();
