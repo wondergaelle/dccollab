@@ -13,13 +13,18 @@
                 {% for projet in app.user.projets %}
                     <article class="col-4">
                         {% include 'projet/_thumbnail.html.twig' with {'projet': projet} only %}
+                        <span><a href="{{ path('projet_edit', {'id': projet.id}) }}">Edit</a></span><br>
+                        <span><a href="{{ path('projet_delete', {'id': projet.id}) }}">Delete</a></span>
                         <div class="modal-footer ">
                             <a href="{{ path('projet_show', {'id': projet.id}) }}" class="btn btn-danger"><i
                                         class="fa fa-eye"></i>Voir plus</a>
                         </div>
+
                     </article>
+
                 {% endfor %}
                 <article>
+
 
             </div>
         </div>

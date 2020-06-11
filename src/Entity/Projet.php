@@ -6,11 +6,13 @@ use App\Repository\ProjetRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Faker\Provider\Image;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
  * @ORM\Entity(repositoryClass=ProjetRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Projet
 {
@@ -166,6 +168,30 @@ class Projet
         return $this->image;
     }
 
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setProjet($this);
+        }
+
+        return $this;
+    }
+
+    public function removePhoto(Image $image): self
+    {
+        if ($this->images->contains($image)) {
+            $this->images->removeElement($image);
+            // set the owning side to null (unless already changed)
+            if ($image->getProjet() === $this) {
+                $image->setProjet(null);
+            }
+        }
+
+        return $this;
+    }
+
+
     public function getImageOrplaceHolder(): string {
         return empty($this->getImage())?"images/placeholder.png":"images/". $this->getImage();
     }
@@ -201,6 +227,7 @@ class Projet
     {
         return $this->getNom();
     }
+
 
 
 }

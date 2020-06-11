@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\FileUploader;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 
@@ -31,14 +33,21 @@ class ProjetController extends AbstractController
     /**
      * @Route("/new", name="projet_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, FileUploader $fileUploader): Response
     {
         $projet = new Projet();
         $form = $this->createForm(ProjetType::class, $projet);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $pictureFile */
+            $pictureFile = $form['pictureFile']->getData();
+            if($pictureFile){
+                $pictureFilename = $fileUploader->upload($pictureFile);
+                $projet->setImage($pictureFilename);
+            }
             $entityManager = $this->getDoctrine()->getManager();
+            $projet->setUser($this->getUser());
             $entityManager->persist($projet);
             $entityManager->flush();
 
@@ -50,6 +59,7 @@ class ProjetController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
 
     /**
      * @Route("/{id}", name="projet_show", methods={"GET"})
