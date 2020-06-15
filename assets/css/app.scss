@@ -6,27 +6,43 @@
 
 // import font awesone 4
 
-
-
 .page-content {
   min-height: 100vh;
 }
+
 .bg {
   background-size: cover;
   background-repeat: no-repeat;
   height: 40rem;
-
 }
 
-.active{
+.active {
   color: orange;
 }
 
 .page-footer {
 
-height: 15rem;
+  height: 25rem;
   background-color: #4E5D6C;
 }
+
+.list-unstyled > li > a {
+  color: white;
+}
+
+.list-unstyled > li > p {
+  color: white;
+}
+
+.text-uppercase {
+  color: white;
+}
+
+.footer-list{
+  padding-top: 5rem;
+}
+
+
 
 
 

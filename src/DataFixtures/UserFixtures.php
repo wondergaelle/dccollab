@@ -53,11 +53,6 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
 
     public function getDependencies()
     {
-        return [
-            EcoleFixtures::class,
-            FiliereFixtures::class,
-
-
-        ];
+        return [ EcoleFixtures::class, FiliereFixtures::class, ];
     }
 }

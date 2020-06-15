@@ -10,8 +10,9 @@
     </ol>
     <main class="page-content">
         <div class="container-sm">
+            <div class="m-4 text-danger">
             <h1>Découvrez tous nos projets</h1>
-
+            </div>
 
             <div class="row">
 
@@ -22,6 +23,7 @@
                             <a href="{{ path('projet_show', {'id': projet.id}) }}" class="btn btn-danger"><i
                                         class="fa fa-eye"></i>Voir plus</a>
                         </div>
+
                     </div>
                 {% endfor %}
             </div>

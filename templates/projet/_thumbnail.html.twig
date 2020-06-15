@@ -1,17 +1,20 @@
 <article class="projet-thumbnail">
     <div class="container">
         <div class="card border-primary mb-3" style="max-width: 20rem;">
-            <h4 class="card-title text-success">{{ projet.nom }}</h4>
-            <p class="card-text" style="height: 200px">{{ projet.extrait }}</p>
-            <img style="height: 200px; width: 100%; display: block;" src={{ asset('uploads/' ~ projet.image  ) }}>
-            <p >Compétences recherchées : </p>
-
-            {% for competence in projet.competence %}
-
-                <i class="fa fa-user"></i>
-                <span class="flex-nowrap" >{{ competence }}</span>
-
-            {% endfor %}
+            <h4 class="card-title text-primary text-uppercase">{{ projet.nom }}</h4>
+            <p class="card-text text-primary" style="max-height: 200px">{{ projet.extrait }}</p>
+            <img style="height: 200px; width: 100%; display: block;"
+                 src={{ asset('uploads/' ~ projet.image  ) }}>
+            <p>Compétences recherchées : </p>
+            <p style="height: 100px">
+                {% for competence in projet.competence %}
+                <i class="fa fa-user" style="height: 100px"></i>
+                <span class="flex-nowrap">{{ competence }}</span>
+                {% if not loop.last %}
+                /
+                {% endif %}
+                {% endfor %}
+            </p>
 
         </div>
 

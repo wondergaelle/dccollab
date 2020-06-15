@@ -32,13 +32,13 @@ npm run watch
 ### Créer le projet
 
 ```shell
-symfony new salutem --full
+symfony new dccollab --full
 ```
 
 OU
 
 ```shell
-composer create-project symfony/website-skeleton salutem
+composer create-project symfony/website-skeleton dccollab
 ```
 
 Eventuellement modifier le fichier .gitignore

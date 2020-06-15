@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Projet{% endblock %}
-
 {# Surcharge de blocks : on projète du contenu dans les différents blocks de thème #}
 {% block body %}
 
@@ -9,20 +8,14 @@
         <h1 class="text-danger">{{ projet.nom }}</h1>
         <div class="row">
             <div class="col4">
-                {{ projet.image }}
+                <img style="height: 200px; width: 100%; display: block;" src={{ asset('uploads/' ~ projet.image  ) }}>
             </div>
-            <div class="col-8">
-                <h3>{{ projet.nom }}</h3>
-                <p>projet crée le : </p>
-                <span class="">
+            <div class="col-6">
+                <p>projet crée le :
                     {{ projet.dateCreation|date("d/m/Y") }}
-                </span><br>
+                <br> </p>
                 <div>
-                    <p>Par : </p>
-                    <span class="">
-                    <i class="fa fa-user"></i>
-                    {{ projet.user.fullname }}
-                </span><br>
+                    <p>Par : {{ projet.user.fullname }} </p>
                 </div>
                 <span class="">
                     {{ projet.user.email }}
@@ -34,18 +27,15 @@
         <article>
             <p>{{ projet.contenu }}</p>
 
-
             <h2>Compétences recherchées</h2>
             {% for competence in projet.competence %}
             <li><a href="{{ path('competence_show',{'id':competence.id}) }}"
                    class="text-primary">{{ competence.nom }}</a></li>
 
             {% endfor %}<br>
-
         </article>
 
         <article>
-
             <h2>Utilisateurs potentiels : </h2>
             {% for competence in projet.competence %}
                 <a href="{{ path('competence_show',{'id':competence.id}) }} "
@@ -55,6 +45,7 @@
             {% endfor %}
 
         </article>
+        <a href="{{ path('projet_index') }}">back to list</a>
 
 
 

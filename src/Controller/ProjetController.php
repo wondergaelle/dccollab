@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 use App\Entity\Projet;
@@ -11,8 +10,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-
-
 
 
 /**
@@ -45,8 +42,11 @@ class ProjetController extends AbstractController
             if($pictureFile){
                 $pictureFilename = $fileUploader->upload($pictureFile);
                 $projet->setImage($pictureFilename);
+
+
             }
             $entityManager = $this->getDoctrine()->getManager();
+
             $projet->setUser($this->getUser());
             $entityManager->persist($projet);
             $entityManager->flush();

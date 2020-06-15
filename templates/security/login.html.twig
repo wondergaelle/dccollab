@@ -5,41 +5,51 @@
 {% block body %}
     <div class="bg"
          style="background-image:url('{{ asset('images/background.png') }}'), linear-gradient(to bottom, rgba(255,255,255,0.6) 0%,rgba(0,0,0,0.6) 60%)">
-
-        <div class="container">
-            <div class="justify-content-center">
-                <h1 class="text-success">Connexion</h1>
-                <form method="post">
-                    {% if error %}
-                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                    {% endif %}
-                    {% if app.user %}
-                        <div class="mb-3">
-                            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        <div class="container ">
+            <div class="mx-auto col-md-8">
+                <div class="offset-4">
+                    <img src="{{ asset('images/logo.png') }}" alt="logo" width="250rem">
+                </div>
+                <div class="">
+                    <p>Bonjour, bienvenue sur l’Extranet.
+                        Vous êtes candidat, étudiant, ancien, enseignant, entreprise, ou membre de l’administration du
+                        réseau,
+                        accédez aux services qui vous sont proposés en vous connectant ci-contre.</p>
+                    <form method="post">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                        {% if app.user %}
+                            <div class="mb-3">
+                                You are logged in as {{ app.user.username }}, <a
+                                        href="{{ path('app_logout') }}">Logout</a>
+                            </div>
+                        {% endif %}
+                        <div class="form-group">
+                            <label for="inputEmail">Email</label>
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
+                                   class="form-control"
+                                   required autofocus>
                         </div>
-                    {% endif %}
-                    <div class="form-group">
-                        <label for="inputEmail">Email</label>
-                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
-                               class="form-control"
-                               required autofocus>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword">Password</label>
-                        <input type="password" name="password" id="inputPassword" class="form-control" required>
-                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                    </div>
-                    <button type="submit" class="btn btn-danger">
-                        <i class="fa fa-sign-in"></i>
-                        Login
-                    </button>
-                </form>
-                <hr>
-                <a href="{{ path('app_register') }}" class="btn btn-danger">
-                    <i class="fa fa-user-plus"></i>
-                    Créer un compte
-                </a>
+                        <div class="form-group">
+                            <label for="inputPassword">Password</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control" required>
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                        </div>
+                        <button type="submit" class="btn btn-danger offset-5">
+                            <i class="fa fa-sign-in"></i>
+                            Login
+                        </button>
+                    </form>
+                    <hr>
+                    <p>Vous n’avez pas de compte, vous avez oublié vos identifiants, vous rencontrez des
+                        problèmes pour vous connecter, veuillez vous adresser à la scolarité de votre établissement. <a
+                                href="{{ path('app_register') }}" class="btn btn-danger offset-8">
+                            <i class="fa fa-user-plus "></i>
+                            Créer un compte
+                        </a></p>
 
+                </div>
             </div>
         </div>
     </div>

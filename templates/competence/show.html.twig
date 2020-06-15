@@ -5,7 +5,6 @@
 {% block body %}
     <div class="container">
         <h1>{{ competence.nom }}</h1>
-
         <ul class="list-group">
             <h2>Etudiants avec la compétence</h2>
             {% for user in competence.users %}
@@ -16,11 +15,5 @@
             {% endfor %}
         </ul>
         <a class="text-danger" href="{{ path('projet_index') }}">back to list</a>
-
-
     </div>
-
-
-
-
 {% endblock %}

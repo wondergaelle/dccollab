@@ -285,4 +285,6 @@ class User implements UserInterface
     {
         return $this->getNom();
     }
+
+
 }

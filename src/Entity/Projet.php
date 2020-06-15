@@ -167,6 +167,7 @@ class Projet
     {
         return $this->image;
     }
+//ajout de 2 méthodes pour l'upload d'images
 
     public function addImage(Image $image): self
     {
@@ -174,11 +175,10 @@ class Projet
             $this->images[] = $image;
             $image->setProjet($this);
         }
-
         return $this;
     }
 
-    public function removePhoto(Image $image): self
+    public function removeImage(Image $image): self
     {
         if ($this->images->contains($image)) {
             $this->images->removeElement($image);
@@ -187,10 +187,8 @@ class Projet
                 $image->setProjet(null);
             }
         }
-
         return $this;
     }
-
 
     public function getImageOrplaceHolder(): string {
         return empty($this->getImage())?"images/placeholder.png":"images/". $this->getImage();
@@ -214,7 +212,7 @@ class Projet
         return $this;
     }
 
-    //Pour enregistrer la date et l'heure quand les utilisateurs clique sur "Envoyer" dans le formulaire
+    //Pour enregistrer la date et l'heure quand les utilisateurs cliquent sur "Envoyer" dans le formulaire
     /**
      * @ORM\PrePersist
      *

@@ -1,0 +1,24 @@
+{% if  app.user %}
+    <li class="nav-item text-light"><a class="nav-link" href="{{ path('projet_new') }}">Créer un projet</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('profil') }}">
+            <i class="fa fa-user-circle"></i>
+            Mon profil
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('projet_index') }}">Consulter les projets</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('user_index', {'id': 'x'}) }}">Liste des utilisateurs</a>
+    </li>
+    <li class="nav-item"><a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a></li>
+{% endif %}
+{% if is_granted('ROLE_ADMIN') %}
+    <li class="nav-item"><a class="nav-link" href="{{ path('easyadmin') }}">Administration</a></li>
+{% endif %}
+
+
+
+

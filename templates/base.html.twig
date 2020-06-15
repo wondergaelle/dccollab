@@ -3,68 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Bienvenue sur DcCollad ! {% endblock %}</title>
-
+    <link rel="icon" href="{{ asset('images/favicon.ico') }}" />
     {% block stylesheets %}
         {# lien vers bootswatch ==> template de base dupliqué sur toutes les pages (lien vers le css) #}
         <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
         {{ encore_entry_link_tags('app') }}
-
     {% endblock %}
 </head>
 <body>
 <header class="page-header">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="{{ path('homepage') }}"> <img src="{{ asset('images/logo-blanc.png') }}"
-                                                                        alt="logo-blanc" width="90rem"> </a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
+        <div class="container justify-content-center">
+            {{ include('default/_logo_nav.html.twig') }}
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
                     aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav mr-auto">
-
-                    {% if app.user %}
-                        <li class="nav-item "><a class="nav-link" href="{{ path('projet_new') }}">Créer un projet</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('profil') }}">
-                                <i class="fa fa-user-circle"></i>
-                                Mon profil
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('projet_index') }}">Consulter les projets</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('user_index', {'id': 'x'}) }}">Liste des utilisateurs</a>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a></li>
-                    {% endif %}
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <li class="nav-item"><a class="nav-link" href="{{ path('easyadmin') }}">Administration</a></li>
-                    {% endif %}
-
-
+                <ul class="nav navbar-nav mx-auto text-light ">
+                    {{ include('default/_nav.html.twig') }}
                 </ul>
             </div>
         </div>
     </nav>
 </header>
 
-
 <main>
     {% block body %}{% endblock %}
 </main>
 
 <footer class="page-footer bg-primary">
-    <div class="container text-muted">
-        <i class="fa fa-copyright"></i> DcCollab 2020
+    <!-- Footer -->
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+        <!-- Grid row -->
+        <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-4 mt-md-0 mt-3 ">
+                <a class="navbar-brand" href="{{ path('homepage') }}"> <img src="{{ asset('images/logo-blanc.png') }}"
+                                                                            alt="logo-blanc" width="150rem"> </a>
+            </div>
+            <!-- Grid column -->
+            <hr class="clearfix w-100 d-md-none pb-3">
+            <!-- Grid column -->
+            <div class="col-md-3 mb-md-0 mb-3 footer-list ">
+                <!-- Links -->
+                <ul class="list-unstyled ">
+                    {% if app.user %}
+                        <h5 class="text-uppercase">Menu</h5>
+                    {% endif %}
+                    {{ include('default/_nav.html.twig') }}
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-3 mb-md-0 mb-3 footer-list   ">
+
+                <!-- Links -->
+                <h5 class="text-uppercase">Contact</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <p>Digital Campus</p>
+                    </li>
+                    <li>
+                        <p >3 Place du général Giraud</p>
+                    </li>
+                    <li>
+                        <p >35 000 Rennes</p>
+                    </li>
+                    <li>
+                        <p>tel : 02 30 96 35 46</p>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://www.digital-campus.fr/">www.digital-campus.fr</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+
     </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3 text-muted">
+        <i class="fa fa-copyright"></i> < FlaG 2020 >
+    </div>
+    <!-- Copyright -->
 </footer>
 
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
+
 {% endblock %}
 
 </body>
