@@ -26,7 +26,7 @@ class ProjetController extends AbstractController
             'projets' => $projetRepository->findAll(),
         ]);
     }
-
+    // upload d'une image
     /**
      * @Route("/new", name="projet_new", methods={"GET","POST"})
      */
@@ -47,6 +47,7 @@ class ProjetController extends AbstractController
             }
             $entityManager = $this->getDoctrine()->getManager();
 
+            //permet l'affichage du user en cours qui crée le projet
             $projet->setUser($this->getUser());
             $entityManager->persist($projet);
             $entityManager->flush();
@@ -76,6 +77,9 @@ class ProjetController extends AbstractController
      */
     public function edit(Request $request, Projet $projet): Response
     {
+        if ($projet->getUser()!= $this->getUser()){
+            throw $this->createAccessDeniedException();
+        }
         $form = $this->createForm(ProjetType::class, $projet);
         $form->handleRequest($request);
 

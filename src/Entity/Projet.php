@@ -10,10 +10,14 @@ use Faker\Provider\Image;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
+
+
 /**
  * @ORM\Entity(repositoryClass=ProjetRepository::class)
  * @ORM\HasLifecycleCallbacks()
  */
+
+//callback s'applique à la classe entité
 class Projet
 {
     /**

@@ -37,8 +37,10 @@ security:
     access_control:
         # require ROLE_ADMIN for /admin*
          - { path: ^/admin, roles: ROLE_ADMIN }
-         #- { path: ^/profile, roles: ROLE_USER }
-         #- { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/, roles: ROLE_USER }
+
 
     access_denied_url: /error
 

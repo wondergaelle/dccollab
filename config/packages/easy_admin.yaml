@@ -6,6 +6,7 @@ easy_admin:
          - {route: 'homepage', label: 'Back to website', icon: 'home'}
          - {entity: 'User', label: 'Users', icon: 'user' }
          - {entity: 'Projet', label: 'Projets', icon: 'folder-open' }
+         - {entity: 'Categorie', label: 'Categories', icon: 'folder-open' }
          - {entity: 'Competence', label: 'Compétences', icon: 'folder-open' }
          - {entity: 'Ecole', label: 'Ecoles', icon: 'folder-open' }
          - {entity: 'Filiere', label: 'Filieres', icon: 'folder-open' }

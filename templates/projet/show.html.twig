@@ -38,7 +38,7 @@
         <article>
             <h2>Utilisateurs potentiels : </h2>
             {% for competence in projet.competence %}
-                <a href="{{ path('competence_show',{'id':competence.id}) }} "
+                <a href="{{ path('competence_show',{'id':competence.id}) }}  "
                 > </a>
                 <span> {{ include('competence/_thumbnail.html.twig') }}</span>
 

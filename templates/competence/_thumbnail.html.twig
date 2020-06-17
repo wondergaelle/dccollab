@@ -1,16 +1,17 @@
 <article class="container">
     <div>
-
-        <h5>{{ competence.nom }} : </h5>
-            {% for user in competence.users %}
-                <ul>
-                    <li class="list-group-item  justify-content-between align-items-center">
+        <div class="text-danger">
+            <h5>{{ competence.nom }} : </h5>
+        </div>
+        {% for user in competence.users %}
+            <ul>
+                <li class="list-group-item  justify-content-between align-items-center">
                         <span class="text-primary">
                         <a href="{{ path('user_show',{'id':user.id}) }}"
                            class="text-primary ">{{ user.fullname }} {{ user.ecole }}</a></span>
-                    </li>
-                </ul>
-            {% endfor %}
+                </li>
+            </ul>
+        {% endfor %}
 
     </div>
     <br>
