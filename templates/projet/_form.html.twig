@@ -10,7 +10,9 @@
         {{ form_row(form.competence) }} <br>
     </div>
     <div>
-        <button type="submit" class="btn btn-danger">{{ button_label|default('Sauvegarder') }}</button>
+        <button type="submit" class="btn btn-danger">
+            {{ button_label|default('Sauvegarder') }}
+        </button>
     </div>
 </div>
 {{ form_end(form) }}

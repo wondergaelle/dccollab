@@ -1,5 +1,5 @@
 <?php
-// src/service/FileUploader.php
+
 namespace App\Service;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -24,6 +24,7 @@ class FileUploader
     }
     public function getTargetDirectory()
     {
+        // destination du dossier enregistré
         return $this->targetDirectory;
     }
 }

@@ -7,15 +7,21 @@
     <div class="container">
         <h1 class="text-danger">{{ projet.nom }}</h1>
         <div class="row">
-            <div class="col4">
+            <div class="col-4">
                 <img style="height: 200px; width: 100%; display: block;" src={{ asset('uploads/' ~ projet.image  ) }}>
             </div>
-            <div class="col-6">
-                <p>projet crée le :
+            <div class="col-4">
+                <h3>{{ projet.nom }}</h3>
+                <p>projet crée le : </p>
+                <span class="">
                     {{ projet.dateCreation|date("d/m/Y") }}
-                <br> </p>
+                </span><br>
                 <div>
-                    <p>Par : {{ projet.user.fullname }} </p>
+                    <p>Par : </p>
+
+                    <i class="fa fa-user"></i>
+                    {{ projet.user.fullname }}
+                </span><br>
                 </div>
                 <span class="">
                     {{ projet.user.email }}

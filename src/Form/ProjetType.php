@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 class ProjetType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -17,20 +18,19 @@ class ProjetType extends AbstractType
             ->add('nom')
             ->add('nomEntreprise')
             ->add('contenu')
-            ->add('pictureFile', FileType::class,[
-                'label'=>'insérer une image',
+            ->add('pictureFile', FileType::class, [
+                'label' => 'insérer une image',
                 // non mappé signifie que ce champ n'est associé à aucune propriété d'entité
-                'mapped'=>false])
+                'mapped' => false])
             ->add('extrait')
             ->add('competence', EntityType::class, [ // relié à l'entity compétences
                 'class' => Competence::class,
                 'label' => 'Compétences',
                 'multiple' => true, // choix multiple
                 'expanded' => true, // permet d'avoir une liste de case à cocher
-            ]);
+            ])
+            ->getForm();
     }
-
-
     public
     function configureOptions(OptionsResolver $resolver)
     {

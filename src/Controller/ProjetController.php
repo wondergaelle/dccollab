@@ -32,31 +32,35 @@ class ProjetController extends AbstractController
      */
     public function new(Request $request, FileUploader $fileUploader): Response
     {
+        // creation d'un projet
         $projet = new Projet();
+        // creation du fomulaire en appelant la classe ProjetType généré par composer Form
         $form = $this->createForm(ProjetType::class, $projet);
+        // pour traiter les données du formulaire => méthode handleRequest
         $form->handleRequest($request);
-
+        // vérifie si le le formulaire a été soumis et si les données sont valides
         if ($form->isSubmitted() && $form->isValid()) {
+            //utilisation du service
             /** @var UploadedFile $pictureFile */
             $pictureFile = $form['pictureFile']->getData();
             if($pictureFile){
                 $pictureFilename = $fileUploader->upload($pictureFile);
                 $projet->setImage($pictureFilename);
-
-
             }
             $entityManager = $this->getDoctrine()->getManager();
-
             //permet l'affichage du user en cours qui crée le projet
             $projet->setUser($this->getUser());
+            // on hydrate l'instance $projet
             $entityManager->persist($projet);
+            // enregistrement des données dans la base
             $entityManager->flush();
-
+            // redirige l'utilisateur
             return $this->redirectToRoute('projet_index');
         }
-
+        // si le projets existe les données sont envoyées dans la vue
         return $this->render('projet/new.html.twig', [
             'projet' => $projet,
+            // resultat de la fonction createView renvoyée à twig pour l'affichage
             'form' => $form->createView(),
         ]);
     }
@@ -77,18 +81,16 @@ class ProjetController extends AbstractController
      */
     public function edit(Request $request, Projet $projet): Response
     {
-        if ($projet->getUser()!= $this->getUser()){
-            throw $this->createAccessDeniedException();
+        if (!$this->isGranted("ROLE_ADMIN") && $this->getUser() !== $projet->getUser()){
+            throw $this->createAccessDeniedException("Vous n'avez pas le droit de modifier ce projet");
         }
         $form = $this->createForm(ProjetType::class, $projet);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('projet_index');
         }
-
         return $this->render('projet/edit.html.twig', [
             'projet' => $projet,
             'form' => $form->createView(),
